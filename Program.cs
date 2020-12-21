@@ -8,8 +8,7 @@ namespace POO_PROJETODEPRODUTOS
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+           Login app = new Login();
         }
     }
 }
-

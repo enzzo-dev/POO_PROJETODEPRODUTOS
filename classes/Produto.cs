@@ -1,7 +1,61 @@
+using System;
+using System.Collections.Generic;
+
 namespace POO_PROJETODEPRODUTOS.classes
 {
     public class Produto
     {
+        int Codigo {get;set;}
+        public string NomeProduto {get;set;}
+        public float Preco {get;set;}
+    
+        public DateTime DataCadastro {get;set;}
+        public Marca Marca { get; set; }
+        public Usuario CadastradoPor {get;set;}
+        public List<Produto> ListaDeProdutos {get;set;}
         
-    }
+
+
+        public void Cadastrar(){
+            Produto novoProduto = new Produto();
+
+            System.Console.WriteLine("Digite o código do produto: ");
+            novoProduto.Codigo = int.Parse(Console.ReadLine());
+
+            System.Console.WriteLine("Digite o Nome do produto: ");
+            novoProduto.NomeProduto = Console.ReadLine();
+            
+            System.Console.WriteLine("Digite o preço do produto: ");
+            novoProduto.Preco = float.Parse(Console.ReadLine());
+
+            novoProduto.DataCadastro = DateTime.UtcNow;
+
+            Marca = Marca.CadastrarMarca();
+
+            CadastradoPor = new Usuario();
+
+            ListaDeProdutos.Add(novoProduto);
+        }
+
+        public void Listar(){
+            Console.ForegroundColor = ConsoleColor.Green;
+            foreach (Produto item in ListaDeProdutos)
+            {
+                System.Console.WriteLine($"Código: {item.Codigo}");
+                System.Console.WriteLine($"Produto: {item.NomeProduto}");
+                System.Console.WriteLine($"Preço: {item.Preco}");
+                System.Console.WriteLine($"Data de cadastro: {item.DataCadastro}");
+                System.Console.WriteLine($"Marca:  {item.Marca.NomeMarca}");
+                System.Console.WriteLine($"Cadastrado por: {item.CadastradoPor.Nome}");
+                System.Console.WriteLine();
+            }
+            Console.ResetColor();
+        }
+
+        public void Deletar(int cod){
+            Produto prodDelete = ListaDeProdutos.Find(p => p.Codigo == cod);
+            ListaDeProdutos.Remove(prodDelete);
+
+        }
+    }   
 }

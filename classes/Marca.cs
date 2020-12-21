@@ -7,23 +7,25 @@ namespace POO_PROJETODEPRODUTOS.classes
     public class Marca
     {
         int Codigo {get;set;}
-        string NomeMarca {get;set;}
+        public string NomeMarca {get;set;}
         DateTime DataCadastro {get;set;}
 
-        List<Marca> Marcas {get;set;}
+        List<Marca> Marcas = new List<Marca>();
 
-            public void CadastrarMarca(){
+            public Marca CadastrarMarca(){
                 Marca novaMarca = new Marca();
 
                 System.Console.WriteLine("Digite o código da marca: ");
-                Codigo = int.Parse(Console.ReadLine());
+                novaMarca.Codigo = int.Parse(Console.ReadLine());
 
                 System.Console.WriteLine("Nome da marca: ");
-                NomeMarca = Console.ReadLine();
+                novaMarca.NomeMarca = Console.ReadLine();
 
                 novaMarca.DataCadastro = DateTime.UtcNow;
 
                 Marcas.Add(novaMarca);
+
+                return novaMarca;
             }
 
             public void Listar(){
@@ -34,9 +36,16 @@ namespace POO_PROJETODEPRODUTOS.classes
                     Console.WriteLine("---------------------------------------------------------------------");
                     System.Console.WriteLine($"Nome da marca: {m.NomeMarca} - Código da Marca: {m.Codigo} -  Data de cadastro: {m.DataCadastro}");
                     Console.WriteLine("---------------------------------------------------------------------");
-                    Console.WriteLine("")
+                    Console.WriteLine("");
+                    
                     
                 }
+            }
+
+            public void Deletar(int cod){
+                Marca marcaDelete = Marcas.Find(m => m.Codigo == cod);
+                Marcas.Remove(marcaDelete);
+
             }
     }
 }
