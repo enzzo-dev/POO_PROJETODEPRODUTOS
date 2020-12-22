@@ -43,8 +43,8 @@ namespace POO_PROJETODEPRODUTOS.classes
             System.Console.WriteLine($"Data de cadastro: {DataCadastro = DateTime.UtcNow}");           
         }
 
-        public void Deletar(int cod){
-         
+        public void Deletar(){
+            
         }
     }
 }

@@ -10,9 +10,9 @@ namespace POO_PROJETODEPRODUTOS.classes
         public float Preco {get;set;}
     
         public DateTime DataCadastro {get;set;}
-        public Marca Marca { get; set; }
+        public Marca Marca = new Marca();
         public Usuario CadastradoPor {get;set;}
-        public List<Produto> ListaDeProdutos {get;set;}
+        public List<Produto> ListaDeProdutos = new List<Produto>();
         
 
 
@@ -31,8 +31,7 @@ namespace POO_PROJETODEPRODUTOS.classes
             novoProduto.DataCadastro = DateTime.UtcNow;
 
             Marca = Marca.CadastrarMarca();
-
-            CadastradoPor = new Usuario();
+ 
 
             ListaDeProdutos.Add(novoProduto);
         }
@@ -41,13 +40,14 @@ namespace POO_PROJETODEPRODUTOS.classes
             Console.ForegroundColor = ConsoleColor.Green;
             foreach (Produto item in ListaDeProdutos)
             {
+                System.Console.WriteLine("----------------------------------------------------------");
                 System.Console.WriteLine($"Código: {item.Codigo}");
                 System.Console.WriteLine($"Produto: {item.NomeProduto}");
-                System.Console.WriteLine($"Preço: {item.Preco}");
+                System.Console.WriteLine($"Preço: {item.Preco.ToString("n2")}");
                 System.Console.WriteLine($"Data de cadastro: {item.DataCadastro}");
-                System.Console.WriteLine($"Marca:  {item.Marca.NomeMarca}");
-                System.Console.WriteLine($"Cadastrado por: {item.CadastradoPor.Nome}");
-                System.Console.WriteLine();
+                System.Console.WriteLine($"Marca:  {Marca.NomeMarca}");
+                System.Console.WriteLine("----------------------------------------------------------");
+                System.Console.WriteLine("");
             }
             Console.ResetColor();
         }

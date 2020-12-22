@@ -9,6 +9,8 @@ namespace POO_PROJETODEPRODUTOS.classes
             
              Usuario user = new Usuario();
 
+             Console.Clear();
+                
              Logar(user);
 
              if(Logado){
